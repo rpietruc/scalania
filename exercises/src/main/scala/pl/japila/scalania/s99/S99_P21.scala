@@ -8,5 +8,6 @@ object S99_P21 {
     ("my own implementation", insertAt)
   )
 
-  def insertAt[T](toAdd: T, position: Int, ts: Seq[T]): Seq[Any] = ???
+  def insertAt[T](toAdd: T, position: Int, ts: Seq[T]): Seq[Any] =
+    (ts.take(position) :+ toAdd) ++ ts.drop(position)
 }

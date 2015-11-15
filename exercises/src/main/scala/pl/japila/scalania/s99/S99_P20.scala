@@ -7,6 +7,7 @@ object S99_P20 {
     ("my own implementation", removeAt)
   )
 
-  def removeAt[T](n: Int, ts: Seq[T]): (Seq[Any], Any) = ???
+  def removeAt[T](n: Int, ts: Seq[T]): (Seq[Any], Any) =
+    (ts.zipWithIndex.filter(p => p._2 != n).map(_._1), ts(n))
 
 }

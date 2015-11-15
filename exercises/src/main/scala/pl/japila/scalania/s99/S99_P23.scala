@@ -7,5 +7,17 @@ object S99_P23 {
     ("my own implementation", randomSelect)
   )
 
-  def randomSelect[T](count: Int, ts: Seq[T]): Seq[T] = ???
+  def removeAt[T](n: Int, ts: Seq[T]): (Seq[T], T) =
+    (ts.take(n) ++ ts.drop(n + 1), ts(n))
+
+  def randomSelect[T](count: Int, ts: Seq[T]): Seq[T] = ts match {
+    case Nil => Nil
+    case _ => {
+      if (count <= 0) Nil
+      else {
+        val res = removeAt(scala.util.Random.nextInt(ts.length), ts)
+        res._2 +: randomSelect(count - 1, res._1)
+      }
+    }
+  }
 }

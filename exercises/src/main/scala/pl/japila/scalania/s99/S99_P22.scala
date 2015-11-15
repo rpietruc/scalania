@@ -8,5 +8,9 @@ object S99_P22 {
     ("my own implementation", range)
   )
 
-  def range(from: Int, to: Int): Seq[Int] = ???
+  def range(from: Int, to: Int): Seq[Int] =
+    rangeFn(Seq(from), to)
+  def rangeFn(ts: Seq[Int], to: Int): Seq[Int] =
+    if (ts.reverse.head >= to) ts
+    else rangeFn(ts :+ (ts.reverse.head + 1), to)
 }
